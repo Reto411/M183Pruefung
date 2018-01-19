@@ -20,8 +20,13 @@ namespace Pruefung_Praktisch_Musterloesung.Models
         {
             SqlConnection con = this.setUp();
 
+            // prepare params to prevent injection
+            SqlParameter[] sqlparams = new SqlParameter[2];
+            sqlparams[0] = new SqlParameter("@user", username);
+            sqlparams[1] = new SqlParameter("@passowrd", password);
+
             SqlCommand cmd_credentials = new SqlCommand();
-            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE Username = '" + username + "' AND Password = '" + password + "'";
+            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE Username = @user AND Password = @password";
             cmd_credentials.Connection = con;
 
             con.Open();
@@ -61,7 +66,7 @@ namespace Pruefung_Praktisch_Musterloesung.Models
             SqlConnection con = this.setUp();
             
             SqlCommand cmd_credentials = new SqlCommand();
-            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE SessionID = '" + sessionid + "'";
+            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE SessionID = '" + sessionid + "' ";
             cmd_credentials.Connection = con;
 
             con.Open();
