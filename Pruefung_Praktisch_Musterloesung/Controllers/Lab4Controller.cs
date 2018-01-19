@@ -34,7 +34,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
 
             bool intrusion_detected = false;
         
-            if(!username.Contains("@") || !username.Contains('.') || username.Any(c => char.IsUpper(c))
+            if(!username.Contains("@") || !username.Contains('.') || username.Any(c => char.IsUpper(c)))
             {
                 intrusion_detected = true;
             }
