@@ -24,6 +24,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
          * Bei Index wird der string einfach zusammengesetzt, was bewirkt, dass man auch navigiren kann. Einzige bedingung ist dass der pfad existiert.
          * Wenn man dann zumbeispiel ".." als type angibt, sieht man den inhalt des äusseren ordners und kann so dann navigieren.
          * Bei Details gilt das selbe, zudem kann man dann ein file den filename beim parameter "file" übergeben und so dieses herunterladen.
+         * 4.
          * */
 
 
@@ -36,6 +37,13 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
                 type = "lions";                
             }
 
+            if (type.Contains('.') || type.Contains('/'))
+            {
+                var fileurilist = new List<List<string>>();
+                var errormsg = "Navigating around is permitted!";
+                fileurilist.Add(new List<string>() { errormsg });
+                return View(errormsg);
+            }
             var path = "~/Content/images/" + type;
 
             List<List<string>> fileUriList = new List<List<string>>();
@@ -68,6 +76,14 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
         {
             var file = Request.QueryString["file"];
             var type = Request.QueryString["type"];
+
+            if (type.Contains('.') || type.Contains('/'))
+            {
+                var fileurilist = new List<List<string>>();
+                var errormsg = "Navigating around is permitted!";
+                fileurilist.Add(new List<string>() { errormsg });
+                return View(errormsg);
+            }
 
             if (string.IsNullOrEmpty(file))
             {
