@@ -12,8 +12,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
     {
 
         /**
-        * 
-        * ANTWORTEN BITTE HIER
+        * 1. Save points for versioning
         * 
         * */
 
