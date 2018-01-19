@@ -12,9 +12,11 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
     {
 
         /**
-        * 
-        * 
-        * 
+        * 1. Comment : XSS Attack
+        *    Login: SQL Injection
+        * 2. Erklärung zu Comment:
+        *    Der Angreifer, kann ganze javascripts scripte als kommentar senden und einbinden. Mit dieser kann er verschiedenste scripts auf dem
+         *   Rechner der Clients ausführen lassen, z.B. Keylogger
         * */
 
         public ActionResult Index() {
@@ -35,6 +37,12 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
         {
             var comment = Request["comment"];
             var postid = Int32.Parse(Request["postid"]);
+
+            // Prevent xss without script tag, the typped script can't be executed
+            if (comment.Contains("<"))
+            {
+                throw new UnauthorizedAccessException("You shouldn't write own scripts or html tags into comments.");
+            }
 
             Lab3Postcomments model = new Lab3Postcomments();
 
