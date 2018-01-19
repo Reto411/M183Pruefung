@@ -12,7 +12,7 @@ namespace Pruefung_Praktisch_Musterloesung.Models
         private SqlConnection setUp()
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Work\\m183Pruefung\\Pruefung_Praktisch_Musterloesung\\App_Data\\lab2.mdf;Integrated Security=True;Connect Timeout=30";
+            con.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Work\\M183Pruefung\\Pruefung_Praktisch_Musterloesung\\App_Data\\lab2.mdf;Integrated Security=True;Connect Timeout=30";
             return con;
         }
 
