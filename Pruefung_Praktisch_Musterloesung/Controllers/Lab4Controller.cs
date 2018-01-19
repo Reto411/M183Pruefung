@@ -12,6 +12,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
     {
 
         /**
+        * 1. 
         * 1. Save points for versioning
         * 
         * */
@@ -26,10 +27,18 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
         public ActionResult Login()
         {
             var username = Request["username"];
+
+            
+
             var password = Request["password"];
 
             bool intrusion_detected = false;
         
+            if(!username.Contains("@") || !username.Contains('.') || username.Any(c => char.IsUpper(c))
+            {
+                intrusion_detected = true;
+            }
+
             // Hints
             // Request.Browser.Platform;
             // Request.UserHostAddress;
