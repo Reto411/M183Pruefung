@@ -16,9 +16,21 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
     {
 
         /**
-        * 
-        * ANTWORTEN BITTE HIER
-        * 
+        * 1.
+        *  Login: Sql Injections
+        *  Index: Session Fixation
+        *  
+        * 2. SQL Injection Beschreibung:
+        *    Der Angreifer gibt in das Passwort feld: 'OR' 1=1; ein. Welches bewirkt dass der Server dies beim Abfragen der datenbank immer als true war nimmt.
+        *    So muss der Angreifer nur noch den nutzername kennen und kann sich dann einlogen. Er kann auch mit ein wenig mehr aufwand direkt alle NAmen abfragen.
+        *    Weil dies nicht geprüft wird, kann der Angreifer direkt befehle auf dem Server ausfürhren und so theoretisch auch tabellen löschen.
+        *    
+         *   Session Fixation:
+         *   Weil die Session in ein Cookie im browser schreibt, kann der Angreifer ganz einfach die SessionId im Cookie ändern und so eine Session
+         *   eines anderen nutzers verwenden.
+         *   
+         * 
+        *    
         * */
 
         public ActionResult Index() {
