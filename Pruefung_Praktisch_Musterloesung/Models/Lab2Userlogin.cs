@@ -40,14 +40,14 @@ namespace Pruefung_Praktisch_Musterloesung.Models
             return ret;
         }
 
-        public bool storeSessionInfos(string username, string password, string sessionid)
+        public bool storeSessionInfos(string username, string password, string sessionid, string ip)
         {
             if (string.IsNullOrEmpty(sessionid)) return false;
 
             SqlConnection con = this.setUp();
 
             SqlCommand cmd_credentials = new SqlCommand();
-            cmd_credentials.CommandText = "UPDATE [dbo].[Userlogin] SET SessionID = '" + sessionid + "'  WHERE Username = '" + username + "' AND Password = '" + password + "' ";
+            cmd_credentials.CommandText = "UPDATE [dbo].[Userlogin] SET SessionID = '" + sessionid + "'  WHERE Username = '" + username + "' AND Password = '" + password + "' AND Ip= " + ip + "'";
             cmd_credentials.Connection = con;
 
             con.Open();
@@ -59,14 +59,14 @@ namespace Pruefung_Praktisch_Musterloesung.Models
             return res > 0;
         }
 
-        public bool checkSessionInfos(string sessionid)
+        public bool checkSessionInfos(string sessionid, string ip)
         {
             if (string.IsNullOrEmpty(sessionid)) return false;
 
             SqlConnection con = this.setUp();
             
             SqlCommand cmd_credentials = new SqlCommand();
-            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE SessionID = '" + sessionid + "' ";
+            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE SessionID = '" + sessionid + "'' AND Ip='" + ip + "'";
             cmd_credentials.Connection = con;
 
             con.Open();

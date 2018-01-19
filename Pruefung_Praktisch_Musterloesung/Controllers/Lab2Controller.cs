@@ -60,10 +60,10 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
             //var ip = Request.UserHostAddress;
 
             Lab2Userlogin model = new Lab2Userlogin();
-
+            string ip = Request.UserHostAddress;
             if (model.checkCredentials(username, password))
             {
-                model.storeSessionInfos(username, password, sessionid);
+                model.storeSessionInfos(username, password, sessionid, ip);
 
                 HttpCookie c = new HttpCookie("sid");
                 c.Expires = DateTime.Now.AddMonths(2);
@@ -99,7 +99,9 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
 
             Lab2Userlogin model = new Lab2Userlogin();
 
-            if (model.checkSessionInfos(sessionid))
+            // Ip will be enough to check
+            string ip = Request.UserHostAddress;
+            if (model.checkSessionInfos(sessionid, ip))
             {
                 return View();
             }
