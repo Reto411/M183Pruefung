@@ -10,9 +10,20 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
     public class Lab1Controller : Controller
     {
         /**
-         * 
-         * ANTWORTEN BITTE HIER
-         * 
+         * File Data Access: 1-
+         * File Inclusion
+         * Bei der Detailansicht, kann man auch igrgendwelche andere Dateien abfragen, weil der dateipfad als parameter übergeben wird. So kann 
+         * man dan verschiedenste Dateien auf dem system anschauen.
+         * Directory Travel
+         * Dasselbe gilt auch bei der Index. man kan ganze pfäde beim parameter "type" eingeben, weil der Server fügt dann die Type variable ungeprüft mit dem 
+         * pfad zusammen.
+         * 2. 
+         * File Inclusion bei detail view:  localhost/lab1/detail?type=../../.ssh?file=id_rsa           // Versuchen des ssh private key zu stehlen
+         * Directory Traversal bei index: localhost/lab1/index?type=../../
+         * 3.
+         * Bei Index wird der string einfach zusammengesetzt, was bewirkt, dass man auch navigiren kann. Einzige bedingung ist dass der pfad existiert.
+         * Wenn man dann zumbeispiel ".." als type angibt, sieht man den inhalt des äusseren ordners und kann so dann navigieren.
+         * Bei Details gilt das selbe, zudem kann man dann ein file den filename beim parameter "file" übergeben und so dieses herunterladen.
          * */
 
 
